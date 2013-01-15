@@ -1,0 +1,38 @@
+# http://libtorrent.rakshasa.no/rtorrent/rtorrent.1.html
+
+# Port range to use for listening.
+# https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+# https://support.skype.com/en-us/faq/FA148/Which-ports-need-to-be-open-to-use-Skype
+port_range = 1024-65535
+
+# Open the listening port at a random position in the port range.
+port_random = yes
+
+# Perform hash check on torrents that have finished downloading.
+check_hash = yes
+
+# Default directory to save the downloaded torrents.
+directory = ~/Torrents/content
+
+# Session management will be enabled and the torrent files for all open
+# downloads will be stored in this directory.
+session = ~/Torrents/rsession
+
+# Global upload and download rate in KiB. "0" for unlimited.
+download_rate = 0
+upload_rate = 0
+
+# Maximum and minimum number of peers to connect to per torrent.
+#min_peers = 40
+#max_peers = 20
+
+# Same as above but for seeding completed torrents (-1 = same as downloading)
+#min_peers_seed = 10
+#max_peers_seed = 10
+
+# Watch a directory for new torrents, restart torrents that have been
+# copied back and stop those that have been deleted.
+
+schedule = watch_directory,10,10,load_start=~/Torrents/files/*.torrent
+schedule = tied_directory,10,10,start_tied=
+schedule = untied_directory,10,10,close_untied=
