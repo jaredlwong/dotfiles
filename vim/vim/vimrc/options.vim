@@ -6,7 +6,7 @@
 set nocompatible
 
 " 2 moving around, searching and patterns
-set autochdir   " change working directory to whichever file is currently being edited
+set noautochdir   " change working directory to whichever file is currently being edited
 set wrapscan    " search commands wrap around the end of the buffer
 set incsearch   " incremental search
 set ignorecase  " ignore case for most searches
@@ -106,3 +106,4 @@ set encoding=utf-8 " set default encoding for buffers, etc.
 " 25 various
 set gdefault       " automatically add g to end of :s command; change all occurances in lines
 
+set wildignore=bin
