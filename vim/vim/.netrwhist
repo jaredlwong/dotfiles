@@ -1,6 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/jaredlwong/Scripts/mit-directory-proj/prawn/lib/prawn'
-let g:netrw_dirhist_2='/Users/jaredlwong/Documents/courses/6.006/cheat-sheet/xelatex'
-let g:netrw_dirhist_3='/Users/jaredlwong/Scripts/usaco-training-etc/sprime.java'
-let g:netrw_dirhist_4='/Users/jaredlwong/Scripts/android-iap/Tracker/.git'
+let g:netrw_dirhist_cnt =0
