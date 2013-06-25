@@ -1,0 +1,9 @@
+[user]
+    name = Jared Wong
+    email = jwong@pinterest.com
+
+[push]
+    default = simple
+
+[core]
+    excludesfile = ~/.gitignore_global
