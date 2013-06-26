@@ -13,3 +13,6 @@
 [submodule "vim-pathogen"]
 	path = lib/vim-pathogen
 	url = git@github.com:tpope/vim-pathogen.git
+[submodule "powerline"]
+	path = lib/powerline
+	url = git@github.com:Lokaltog/powerline.git
