@@ -10,3 +10,6 @@
 [submodule "vim/vim/lib/vim-markdown"]
 	path = vim/vim/lib/vim-markdown
 	url = git@github.com:tpope/vim-markdown.git
+[submodule "vim-pathogen"]
+	path = vim/vim/lib/pathogen
+	url = git@github.com:tpope/vim-pathogen.git
