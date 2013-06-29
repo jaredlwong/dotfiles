@@ -1,9 +1,16 @@
-[user]
-    name = Jared Wong
-    email = jwong@pinterest.com
+[alias]
+    l1 = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
+    ca = !git add --all && git commit
+
+[color]
+    ui = auto
+
+[core]
+    excludesfile = ~/.gitignore_global
 
 [push]
     default = simple
 
-[core]
-    excludesfile = ~/.gitignore_global
+[user]
+    name = Jared Wong
+    email = jwong@pinterest.com
