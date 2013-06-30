@@ -1,18 +1,18 @@
 [submodule "nerdtree"]
 	path = lib/nerdtree
-	url = git@github.com/scrooloose/nerdtree.git
+	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim-surround"]
 	path = lib/vim-surround
-	url = git@github.com/tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
 [submodule "vim-pathogen"]
 	path = lib/vim-pathogen
-	url = git@github.com:tpope/vim-pathogen.git
+	url = https://github.com/tpope/vim-pathogen.git
 [submodule "vim-scala"]
 	path = lib/vim-scala
-	url = git@github.com:derekwyatt/vim-scala.git
+	url = https://github.com/derekwyatt/vim-scala.git
 [submodule "vim-markdown"]
 	path = lib/vim-markdown
-	url = git@github.com:tpope/vim-markdown.git
+	url = https://github.com/tpope/vim-markdown.git
 [submodule "nerdcommenter"]
 	path = lib/nerdcommenter
-	url = git@github.com:scrooloose/nerdcommenter.git
+	url = https://github.com/scrooloose/nerdcommenter.git
