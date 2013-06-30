@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DOTFILES_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-DOTFILES=$(find $DOTFILES_ROOT -depth 2 -not -path "*.git*" -not -path "*lib*")
+DOTFILES=$(find $DOTFILES_ROOT -maxdepth 2 -mindepth 2 -not -path '*.git*' -not -path '*lib*')
 
 set -e
 

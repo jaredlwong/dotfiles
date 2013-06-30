@@ -10,7 +10,7 @@
     excludesfile = ~/.gitignore_global
 
 [push]
-    default = simple
+    default = current
 
 [user]
     name = Jared Wong
