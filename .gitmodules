@@ -18,7 +18,7 @@
 	url = git://github.com/tpope/vim-surround.git
 [submodule "command-t"]
 	path = lib/command-t
-	url = git://github.com:wincent/Command-T.git
+	url = git://github.com/wincent/Command-T.git
 [submodule "tabular"]
 	path = lib/tabular
 	url = git://github.com/godlygeek/tabular.git

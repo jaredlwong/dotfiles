@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/jaredlwong/install'
 let g:netrw_dirhist_2='/Users/jaredlwong/.dotfiles/.git'
 let g:netrw_dirhist_3='/Users/jaredlwong/.dotfiles/.git/modules/vim-pathogen'
 let g:netrw_dirhist_4='/Users/jaredlwong/Library/Saved Application State/com.jetbrains.pycharm.savedState'
 let g:netrw_dirhist_5='/Users/jaredlwong/.dotfiles/.git/modules/vim-markdown'
+let g:netrw_dirhist_6='/home/jwong/.dotfiles/.git/modules/lib/command-t'
