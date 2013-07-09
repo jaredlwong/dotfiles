@@ -22,3 +22,6 @@
 [submodule "tabular"]
 	path = lib/tabular
 	url = git://github.com/godlygeek/tabular.git
+[submodule "vim-airline"]
+	path = lib/vim-airline
+	url = git://github.com/bling/vim-airline.git
