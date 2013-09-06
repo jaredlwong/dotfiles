@@ -1,27 +1,3 @@
-[submodule "nerdcommenter"]
-	path = lib/nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
-[submodule "nerdtree"]
-	path = lib/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
-[submodule "vim-markdown"]
-	path = lib/vim-markdown
-	url = git://github.com/tpope/vim-markdown.git
-[submodule "vim-pathogen"]
-	path = lib/vim-pathogen
-	url = git://github.com/tpope/vim-pathogen.git
-[submodule "vim-scala"]
-	path = lib/vim-scala
-	url = git://github.com/derekwyatt/vim-scala.git
-[submodule "vim-surround"]
-	path = lib/vim-surround
-	url = git://github.com/tpope/vim-surround.git
-[submodule "command-t"]
-	path = lib/command-t
-	url = git://github.com/wincent/Command-T.git
-[submodule "tabular"]
-	path = lib/tabular
-	url = git://github.com/godlygeek/tabular.git
-[submodule "vim-airline"]
-	path = lib/vim-airline
-	url = git://github.com/bling/vim-airline.git
+[submodule "vim/vim/bundle/vundle"]
+	path = vim/vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git

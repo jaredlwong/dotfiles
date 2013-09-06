@@ -1,5 +1,9 @@
-execute pathogen#infect()
-filetype plugin indent on
+set nocompatible
+filetype off
 
-" nerdcommenter needs this
-filetype plugin on
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+filetype plugin indent on

@@ -30,6 +30,13 @@ link_files () {
   success "linked $1 to $2"
 }
 
+install_vim () {
+  info 'Installing vundle'
+  git submodule init
+  vim +BundleInstall +qall
+  info 'Vim plugins installed'
+}
+
 install_dotfiles () {
   info 'installing dotfiles'
 
@@ -86,6 +93,10 @@ install_dotfiles () {
       if [ "$skip" == "false" ] && [ "$skip_all" == "false" ]
       then
         link_files $source $dest
+        if [[ "$dest" == *.vim ]]
+        then
+            install_vim
+        fi
       else
         success "skipped $source"
       fi
