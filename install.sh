@@ -33,6 +33,7 @@ link_files () {
 install_vim () {
   info 'Installing vundle'
   git submodule init
+  git submodule update
   vim +BundleInstall +qall
   info 'Vim plugins installed'
 }
