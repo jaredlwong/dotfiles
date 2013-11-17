@@ -11,7 +11,6 @@ dotfiles = [
     '.tmux.conf',
     '.vim',
     '.vimrc',
-    '.xmobarrc',
     '.xmonad',
     '.bin',
     '.matplotlib',
