@@ -1,1 +1,0 @@
-../lib/vim-markdown/ftdetect/markdown.vim

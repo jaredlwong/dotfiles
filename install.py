@@ -1,0 +1,74 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import shutil
+
+dotfiles = [
+    '.gitconfig',
+    '.gitignore_global',
+    '.tmux.conf',
+    '.vim',
+    '.vimrc',
+    '.xmobarrc',
+    '.xmonad',
+    '.bin',
+    '.matplotlib',
+]
+
+# http://stackoverflow.com/questions/3041986
+# /python-command-line-yes-no-input/3041990#3041990
+def query_yes_no(question, default="yes"):
+    """Ask a yes/no question via raw_input() and return their answer.
+
+    "question" is a string that is presented to the user.
+    "default" is the presumed answer if the user just hits <Enter>.
+        It must be "yes" (the default), "no" or None (meaning
+        an answer is required of the user).
+
+    The "answer" return value is one of "yes" or "no".
+    """
+    valid = {"yes":True,   "y":True,  "ye":True,
+             "no":False,     "n":False}
+    if default == None:
+        prompt = " [y/n] "
+    elif default == "yes":
+        prompt = " [Y/n] "
+    elif default == "no":
+        prompt = " [y/N] "
+    else:
+        raise ValueError("invalid default answer: '%s'" % default)
+
+    while True:
+        sys.stdout.write(question + prompt)
+        choice = raw_input().lower()
+        if default is not None and choice == '':
+            return valid[default]
+        elif choice in valid:
+            return valid[choice]
+        else:
+            sys.stdout.write("Please respond with 'yes' or 'no' "\
+                             "(or 'y' or 'n').\n")
+
+if __name__ == '__main__':
+    HOME = os.environ['HOME']
+    dotfile_path = os.path.dirname(os.path.realpath(__file__))
+    if not HOME:
+        sys.exit('$HOME must be set')
+    for df in dotfiles:
+        source_path = os.path.join(dotfile_path, df)
+        dest_path = os.path.join(HOME, df)
+        if os.path.lexists(dest_path):
+            if query_yes_no('Would you like to overwrite %s?' % dest_path):
+                if os.path.islink(dest_path):
+                    os.unlink(dest_path)
+                elif os.path.isfile(dest_path):
+                    os.remove(dest_path)
+                elif os.path.isdir(dest_path):
+                    shutil.rmtree(dest_path)
+                else:
+                    sys.exit('Unknown file type %s')
+                os.symlink(source_path, dest_path)
+        else:
+            os.symlink(source_path, dest_path)
+
