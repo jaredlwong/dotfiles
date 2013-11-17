@@ -57,6 +57,7 @@ def install(df, source_path, dest_path):
         if not os.path.exists(os.path.join(source_path, 'bundle', 'vundle')):
             subprocess.call(['git', 'submodule', 'init'])
             subprocess.call(['git', 'submodule', 'update'])
+            subprocess.call(['vim', '+BundleInstall', '+qall'])
     print('Linked %s -> %s' % (dest_path, source_path))
 
 def remove_if_exists(dest_path):
