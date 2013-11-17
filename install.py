@@ -15,6 +15,10 @@ dotfiles = [
     '.xmonad',
     '.bin',
     '.matplotlib',
+    '.bashrc_interactive',
+    ('bashrc_dispatch/bashrc_dispatch', '.bashrc'),
+    ('bashrc_dispatch/bashrc_dispatch', '.bash_profile'),
+    ('bashrc_dispatch/bashrc_dispatch', '.bash_login'),
 ]
 
 # http://stackoverflow.com/questions/3041986
@@ -52,12 +56,16 @@ def query_yes_no(question, default="yes"):
                              "(or 'y' or 'n').\n")
 
 def install(df, source_path, dest_path):
-    os.symlink(source_path, dest_path)
     if df == '.vim':
         if not os.path.exists(os.path.join(source_path, 'bundle', 'vundle')):
             subprocess.call(['git', 'submodule', 'init'])
             subprocess.call(['git', 'submodule', 'update'])
             subprocess.call(['vim', '+BundleInstall', '+qall'])
+    elif 'bashrc_dispatch' in dest_path:
+        if not os.path.exists(dest_path):
+            subprocess.call(['git', 'submodule', 'init'])
+            subprocess.call(['git', 'submodule', 'update'])
+    os.symlink(source_path, dest_path)
     print('Linked %s -> %s' % (dest_path, source_path))
 
 def remove_if_exists(dest_path):
@@ -80,8 +88,12 @@ if __name__ == '__main__':
     overwrite_all = False
     overwrite_all_answered = False
     for df in dotfiles:
-        source_path = os.path.join(dotfile_path, df)
-        dest_path = os.path.join(HOME, df)
+        if isinstance(df, tuple):
+            source_path = os.path.join(dotfile_path, df[0])
+            dest_path = os.path.join(HOME, df[1])
+        else:
+            source_path = os.path.join(dotfile_path, df)
+            dest_path = os.path.join(HOME, df)
         if os.path.lexists(dest_path):
             if not overwrite_all_answered:
                 overwrite_all = query_yes_no('%s exists.\n'
