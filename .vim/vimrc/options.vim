@@ -1,3 +1,6 @@
+scriptencoding utf-8
+set encoding=utf-8
+
 " look at :options for reference
 
 " 1 important

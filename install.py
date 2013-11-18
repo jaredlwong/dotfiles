@@ -57,12 +57,12 @@ def query_yes_no(question, default="yes"):
 
 def install(df, source_path, dest_path):
     if df == '.vim':
-        if not os.path.exists(os.path.join(source_path, 'bundle', 'vundle')):
+        if not os.path.exists(os.path.join(source_path, 'bundle', 'vundle', '.git')):
             subprocess.call(['git', 'submodule', 'init'])
             subprocess.call(['git', 'submodule', 'update'])
             subprocess.call(['vim', '+BundleInstall', '+qall'])
     elif 'bashrc_dispatch' in dest_path:
-        if not os.path.exists(dest_path):
+        if not os.path.exists(os.path.join(dest_path, '.git')):
             subprocess.call(['git', 'submodule', 'init'])
             subprocess.call(['git', 'submodule', 'update'])
     os.symlink(source_path, dest_path)
