@@ -18,6 +18,7 @@ dotfiles = [
     ('bashrc_dispatch/bashrc_dispatch', '.bashrc'),
     ('bashrc_dispatch/bashrc_dispatch', '.bash_profile'),
     ('bashrc_dispatch/bashrc_dispatch', '.bash_login'),
+    '.Xresources',
 ]
 
 # http://stackoverflow.com/questions/3041986
