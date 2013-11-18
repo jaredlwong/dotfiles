@@ -72,13 +72,18 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    #alias grep='grep --color=auto'
+    #alias fgrep='fgrep --color=auto'
+    #alias egrep='egrep --color=auto'
+fi
+
+if ls --color=auto . >/dev/null 2>&1; then
+    alias ls='ls --color=auto' # GNU
+else
+    alias ls='ls -G' # BSD
 fi
 
 # some more ls aliases
@@ -91,6 +96,10 @@ alias l='ls -CF'
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
+fi
+
+if [ -d "/usr/local/vault/bin" ]; then
+    export PATH=/usr/local/vault/bin:$PATH
 fi
 
 # If we have a go environment set up, make sure to set appropriate environment
