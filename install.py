@@ -19,6 +19,7 @@ dotfiles = [
     ('bashrc_dispatch/bashrc_dispatch', '.bash_profile'),
     ('bashrc_dispatch/bashrc_dispatch', '.bash_login'),
     '.Xresources',
+    '.fonts',
 ]
 
 # http://stackoverflow.com/questions/3041986

@@ -71,4 +71,7 @@
 *color14:                 S_base1
 *color15:                 S_base3
 
-xterm*utf8: 2
+XTerm*utf8: 1
+XTerm*faceName: Inconsolata
+XTerm*faceSize: 11
+
