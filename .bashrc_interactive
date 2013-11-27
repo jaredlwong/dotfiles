@@ -113,3 +113,4 @@ PATH=$PATH:$HOME/.bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 alias kcsail='kinit jaredw@CSAIL.MIT.EDU'
 alias kmit='kinit jaredw@ATHENA.MIT.EDU'
+alias vv="du -s -k | sort -nr| cut -f2| xargs-d '\n' du -sh 2>/dev/null"
