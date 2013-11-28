@@ -70,8 +70,22 @@ set shiftwidth=4  " insert 4 spaces if autoindent chooses to indent new line
 set smarttab      " a <Tab> in an indent inserts shiftwidth spaces
 set softtabstop=4 " insert 4 spaces for every tab
 set expandtab     " convert tabs to spaces
+
 set autoindent  " autoindent the lines according to the previous lines
 set smartindent " don't always indent if obvious from syntax
+
+function TabToggle()
+    if &expandtab
+        set shiftwidth=8
+        set softtabstop=0
+        set noexpandtab
+    else
+        set shiftwidth=4
+        set softtabstop=4
+        set expandtab
+    endif
+endfunction
+nmap <F9> mz:execute TabToggle()<CR>'z
 
 " 15 folding
 " nothing
