@@ -98,6 +98,23 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+################################################################################
+
+export LANG=en_US.UTF-8
+export LC_CTYPE="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_COLLATE=C
+export LC_MONETARY="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_PAPER="en_US.UTF-8"
+export LC_NAME="en_US.UTF-8"
+export LC_ADDRESS="en_US.UTF-8"
+export LC_TELEPHONE="en_US.UTF-8"
+export LC_MEASUREMENT="en_US.UTF-8"
+export LC_IDENTIFICATION="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
 if [ -d "/usr/local/vault/bin" ]; then
     export PATH=/usr/local/vault/bin:$PATH
 fi
@@ -114,3 +131,4 @@ PATH=$PATH:$HOME/.bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
 alias kcsail='kinit jaredw@CSAIL.MIT.EDU'
 alias kmit='kinit jaredw@ATHENA.MIT.EDU'
 alias vv="du -s -k | sort -nr| cut -f2| xargs-d '\n' du -sh 2>/dev/null"
+alias tmux="env TERM=screen-256color tmux"

@@ -75,3 +75,8 @@ XTerm*utf8: 1
 XTerm*faceName: Inconsolata
 XTerm*faceSize: 11
 xterm*selectToClipboard: true
+
+UXTerm*utf8: 1
+UXTerm*faceName: Inconsolata
+UXTerm*faceSize: 11
+Uxterm*selectToClipboard: true
