@@ -81,9 +81,13 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 if ls --color=auto . >/dev/null 2>&1; then
-    alias ls='ls --color=auto' # GNU
+alias ls='ls --color=auto' # GNU
 else
-    alias ls='ls -G' # BSD
+alias ls='ls -G' # BSD
+fi
+
+if [[ `hostname -s` = ether ]]; then
+source /afs/csail/proj/courses/6.172/scripts/.bashrc
 fi
 
 # some more ls aliases

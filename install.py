@@ -62,8 +62,8 @@ def install(df, source_path, dest_path):
             subprocess.call(['git', 'submodule', 'init'])
             subprocess.call(['git', 'submodule', 'update'])
             subprocess.call(['vim', '+BundleInstall', '+qall'])
-    elif 'bashrc_dispatch' in dest_path:
-        if not os.path.exists(os.path.join(dest_path, '.git')):
+    elif 'bashrc_dispatch' in source_path:
+        if not os.path.exists(os.path.join(source_path, '.git')):
             subprocess.call(['git', 'submodule', 'init'])
             subprocess.call(['git', 'submodule', 'update'])
     os.symlink(source_path, dest_path)
