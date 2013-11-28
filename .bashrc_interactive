@@ -83,7 +83,9 @@ fi
 if ls --color=auto . >/dev/null 2>&1; then
 alias ls='ls --color=auto' # GNU
 else
-alias ls='ls -G' # BSD
+# BSD
+# set bold colors so we can see the colors easier
+alias ls='env LSCOLORS=ExFxCxDxBxEgDdAbAgAcAd ls -G'
 fi
 
 if [[ `hostname -s` = ether ]]; then
