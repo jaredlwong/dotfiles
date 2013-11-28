@@ -2,7 +2,7 @@
 	l1 = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
 	l2 = log --date=local --pretty=format:'%C(yellow)%h %C(bold magenta)%<(10,trunc)%an %C(cyan)%<(10,trunc)<%ae> %C(green)|%cd| %C(white)%<(60,trunc)%s'
 	ca = !git add --all && git commit
-	ff = git merge --ff-only
+	ff = merge --ff-only
 [color]
 	ui = auto
 [core]
