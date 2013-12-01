@@ -132,9 +132,13 @@ if [ -d "$HOME/go" ]; then
     export PATH=$GOPATH/bin:$PATH
 fi
 
-PATH=$PATH:$HOME/.bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$PATH:$HOME/.bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 alias kcsail='kinit jaredw@CSAIL.MIT.EDU'
 alias kmit='kinit jaredw@ATHENA.MIT.EDU'
 alias vv="du -s -k | sort -nr| cut -f2| xargs-d '\n' du -sh 2>/dev/null"
 alias tmux="env TERM=screen-256color tmux"
+alias moshmit='mosh --server="athrun mosh_project mosh-server" jaredw@mit'
+alias mitprint="ssh mit 'lp -o media=letter -o sides=two-sided-long-edge -' < "
+
+#export PATH=/home/jaredlwong/llvm/bin:/home/jaredlwong/stack/objdir/bin:$PATH
