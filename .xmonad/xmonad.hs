@@ -7,7 +7,7 @@ import System.IO
 main = do
     xmproc <- spawnPipe "/usr/bin/xmobar /home/jaredlwong/.xmonad/xmobar.hs"
     xmonad $ defaultConfig
-        { terminal = "xterm"
+        { terminal = "uxterm"
         , manageHook = manageDocks <+> manageHook defaultConfig
         , layoutHook = avoidStruts  $  layoutHook defaultConfig
         , logHook = dynamicLogWithPP xmobarPP

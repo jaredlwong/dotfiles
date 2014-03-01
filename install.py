@@ -5,6 +5,27 @@ import sys
 import shutil
 import subprocess
 
+import argparse
+
+INSTALL_TRIES = 10
+
+parser = argparse.ArgumentParser(
+        description='Set up or maintain a computing environment.')
+parser.add_argument('-i', '--install', dest='prog',
+        help='install a particular program. this is the default operation.')
+
+
+def symlink(src, dest):
+    if os.path.isfile(dest):
+        shutil.copy(dest, os.path.join(dest, '.bak'))
+    os.remove(dest)
+    os.symlink(src, dest)
+
+def main():
+    args = parser.parse_args()
+    if args.prog == 'vim':
+
+
 dotfiles = [
     '.gitconfig',
     '.gitignore_global',
@@ -14,10 +35,7 @@ dotfiles = [
     '.xmonad',
     '.bin',
     '.matplotlib',
-    '.bashrc_interactive',
-    ('bashrc_dispatch/bashrc_dispatch', '.bashrc'),
-    ('bashrc_dispatch/bashrc_dispatch', '.bash_profile'),
-    ('bashrc_dispatch/bashrc_dispatch', '.bash_login'),
+    '.profile',
     '.Xresources',
     '.fonts',
 ]
