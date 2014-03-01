@@ -65,11 +65,11 @@ set undolevels=1000 " allow up to 1000 undos; just for portability
 set backspace=indent,eol,start " just for portability
 
 " 14 tabs and indenting
-set tabstop=8     " insert 4 spaces for every tab
+set tabstop=8     " insert 8 spaces for every tab
 set shiftwidth=4  " insert 4 spaces if autoindent chooses to indent new line
 set smarttab      " a <Tab> in an indent inserts shiftwidth spaces
 set softtabstop=4 " insert 4 spaces for every tab
-set expandtab     " convert tabs to spaces
+set noexpandtab     " don't convert tabs to spaces
 
 set autoindent  " autoindent the lines according to the previous lines
 set smartindent " don't always indent if obvious from syntax
