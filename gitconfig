@@ -1,0 +1,62 @@
+[alias]
+	co = checkout
+	st = status
+	sync = !git fetch -n origin && git rebase origin/master
+	here = name-rev HEAD --name-only
+	new = checkout origin/master -b
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset <%an>' --abbrev-commit --date=relative
+	pushed = "! f() { git fetch -q --tags; git tag --contains $1 | grep deploy_ | sort | rev | uniq -s17 | rev; }; f "
+	# add commit ammend
+	acd = "! f() { git add -A && git commit --amend --date=\"$(date -R)\" --no-edit; }; f "
+	# branch
+	b = branch -vv
+	# branch delete
+	bd = branch -D
+	# checkout
+	co = checkout
+	# commit ammend
+	cd = "! f() { git commit --amend --date=\"$(date -R)\" ; }; f "
+	# commit ammend empty
+	cde = commit --amend --date=now --no-edit
+	# fetch origin
+	fo = fetch origin
+	# set upstream
+	up = branch -u origin/master
+	r = "!bash -c 'f() { \
+		(git diff-index --quiet HEAD -- && \
+		 git diff --quiet --exit-code && \
+		 git diff --quiet --cached --exit-code && \
+		 git fetch origin && \
+		 git branch -u origin/master && \
+		 git rebase) || \
+		(echo \"cannot rebase, there are uncommitted changes\" && exit 1); \
+	}; f'"
+	# reset hard origin
+	rho = reset --hard origin
+	# status
+	s = status
+	# unadd files
+	unadd = reset HEAD
+	stat = diff --stat HEAD^1 HEAD
+	arc =  "!bash -c 'f() { \
+	    git acd && \
+	    time arc diff --edit -m up; \
+	}; f'"
+	lol = log --date=local --format='%<(9)%h %cd %<(20)%aN %s'
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+[user]
+	name = Jared Wong
+	email = jaredlwong@gmail.com
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[push]
+	default = current
