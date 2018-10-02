@@ -1,6 +1,8 @@
 [alias]
 	co = checkout
-	st = status
+	s = status
+	l = log
+	x = show
 	sync = !git fetch -n origin && git rebase origin/master
 	here = name-rev HEAD --name-only
 	new = checkout origin/master -b
@@ -12,8 +14,6 @@
 	b = branch -vv
 	# branch delete
 	bd = branch -D
-	# checkout
-	co = checkout
 	# commit ammend
 	cd = "! f() { git commit --amend --date=\"$(date -R)\" ; }; f "
 	# commit ammend empty
