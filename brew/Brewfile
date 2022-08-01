@@ -1,0 +1,86 @@
+#
+# https://github.com/Homebrew/homebrew-bundle
+# Homebrew "bundle" file like ruby bundles
+#
+
+# Nerd fonts
+# https://github.com/Homebrew/homebrew-cask-fonts
+tap "homebrew/cask-fonts"
+
+# see https://github.com/Homebrew/homebrew-bundle
+cask_args appdir: "/Applications"
+
+# https://github.com/mas-cli/mas
+# 📦 Mac App Store command line interface
+brew "mas"
+
+# https://github.com/charmbracelet/glow
+# Render markdown on the CLI, with pizzazz! 💅
+brew "glow"
+
+# https://github.com/jgm/pandoc
+# Universal markup converter
+brew "pandoc"
+
+# https://github.com/neovim/neovim
+# Vim-fork focused on extensibility and usability
+brew "neovim"
+
+# https://github.com/tmux/tmux
+brew "tmux"
+
+# https://github.com/sharkdp/fd
+# A simple, fast and user-friendly alternative to 'find'
+brew "fd"
+
+# https://github.com/junegunn/fzf
+# 🌸 A command-line fuzzy finder
+brew "fzf"
+
+# https://github.com/BurntSushi/ripgrep
+# ripgrep recursively searches directories for a regex pattern while respecting your gitignore
+brew "ripgrep"
+
+# https://github.com/b3nj5m1n/xdg-ninja
+# A shell script which checks your $HOME for unwanted files and directories.
+brew "xdg-ninja"
+
+# https://github.com/gnachman/iterm2-beta
+# iTerm2 is a terminal emulator for Mac OS X that does amazing things.
+# Using beta for auto dark-mode
+cask "iterm2-beta"
+
+# https://github.com/so-fancy/diff-so-fancy
+# Good-lookin' diffs. Actually… nah… The best-lookin' diffs. 🎉
+brew "diff-so-fancy"
+
+cask "firefox"
+
+# https://github.com/koalaman/shellcheck
+# ShellCheck, a static analysis tool for shell scripts
+brew "shellcheck"
+
+# https://github.com/pyenv/pyenv
+# Simple Python version management
+# brew "pyenv"
+
+# https://github.com/starship/starship
+# Zsh prompt line in rust
+brew "starship"
+
+# https://github.com/asdf-vm/asdf
+# Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more
+brew "asdf"
+
+# https://the.exa.website/
+# Improved ls
+brew "exa"
+
+# https://github.com/pypa/pipenv
+# Python Development Workflow for Humans.
+brew "pipenv"
+
+# https://github.com/tonsky/FiraCode
+cask "font-fira-code"
+
+brew "broot"
