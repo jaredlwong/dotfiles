@@ -33,6 +33,10 @@ brew "tmux"
 # A simple, fast and user-friendly alternative to 'find'
 brew "fd"
 
+# https://github.com/chmln/sd
+# Intuitive find & replace CLI (sed alternative)
+brew "sd"
+
 # https://github.com/junegunn/fzf
 # 🌸 A command-line fuzzy finder
 brew "fzf"
@@ -84,3 +88,5 @@ brew "pipenv"
 cask "font-fira-code"
 
 brew "broot"
+
+cask "1password"
