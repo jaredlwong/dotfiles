@@ -1,0 +1,325 @@
+#!/usr/bin/env zsh
+
+# shellcheck shell=bash
+#
+# vim mode
+bindkey -v
+
+# Function to only add to PATH if not in there already
+path_prepend() {
+  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="$1${PATH:+":$PATH"}"
+  fi
+}
+
+path_append() {
+  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="${PATH:+"$PATH:"}$1"
+  fi
+}
+
+################################################################################
+# https://github.com/zimfw/zimfw#set-up-zshrc
+
+# Use degit tool by default to install modules
+zstyle ':zim:zmodule' use 'degit'
+
+export ZIM_HOME="${XDG_CACHE_HOME}/zim"
+
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
+
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+
+# Initialize modules.
+source "${ZIM_HOME}/init.zsh"
+
+################################################################################
+# Starship prompt
+# https://github.com/starship/starship
+# configured in $XDG_CONFIG_HOME/starship.toml
+
+export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/starship.toml"
+eval "$(starship init zsh)"
+
+################################################################################
+# =======
+# history
+# =======
+
+# EXTENDED_HISTORY adds a bit more data (timestamp in unix epoch time and
+# elapsed time of the command)
+setopt EXTENDED_HISTORY
+
+# SHARE_HISTORY across multiple zsh sessions
+setopt SHARE_HISTORY
+
+# APPEND_HISTORY won't overwrite the history file
+setopt APPEND_HISTORY
+
+# INC_APPEND_HISTORY adds commands as they are typed, not at shell exit
+setopt INC_APPEND_HISTORY
+
+# HISTFILE variable tells zsh where to store the history data
+export HISTFILE=$HOME/logs/zsh-history-all.log
+
+# HISTSIZE is the maximum size of the $HISTFILE When the shell reaches this
+# limit the oldest commands will be removed from the history file.
+export HISTSIZE=999999999999999999
+
+# SAVEHIST is the maximum size of the history in memory. When the shell reaches
+# this limit the oldest commands will be removed from memory.
+export SAVEHIST=$HISTSIZE
+
+# Add history to a special log file stored by day in case of emergencies
+# https://zsh.sourceforge.io/Doc/Release/Functions.html#Hook-Functions
+function zshaddhistory_log() {
+  echo "$(date -Iseconds)\t${PWD}\t${1%%$'\n'}" >> "${HOME}/logs/zsh-history-ext-$(date '+%Y-%m-%d').log"
+
+  # # add history to HISTFILE
+  # # https://zsh.sourceforge.io/Doc/Release/Shell-Builtin-Commands.html#print
+  # print -sr -- ${1%%$'\n'}
+
+  # # Add history to custom log file by switching the history stack
+  # # We can't echo because we want it with EXTENDED_HISTORY timestamps
+  # fc -p  $HOME/logs/zsh-history-$(date "+%Y-%m-%d").log
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook zshaddhistory zshaddhistory_log 
+# zshaddhistory_functions=( zshaddhistory_log )
+
+################################################################################
+# =============
+# zplug/plugins
+# =============
+#
+# Must use double quotes in this section.
+# https://github.com/zplug/zplug
+
+# Type in any part of any command from history and then press UP and DOWN arrows to cycle through matches.
+# https://github.com/zsh-users/zsh-history-substring-search
+# zplug "zsh-users/zsh-history-substring-search"
+
+# zplug "plugins/command-not-found", from:oh-my-zsh
+
+# Automatically load your project ENV variables from .env file when you cd into project root directory.
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dotenv
+# zplug "plugins/dotenv", from:oh-my-zsh
+
+# Provide completion options for cd
+# https://github.com/b4b4r07/enhancd
+# export ENHANCD_DISABLE_DOT=1
+# zplug "b4b4r07/enhancd", use:init.sh
+
+# This plugin adds per-directory history for zsh, as well as a global history, and the ability to toggle between them with a keyboard shortcut.
+# The default mode is per directory history, interact with your history as normal.
+# Press ^G (the Control and G keys simultaneously) to toggle between local and global histories.
+# per-directory-history-toggle-history
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/per-directory-history
+# export PER_DIRECTORY_HISTORY_TOGGLE='^G^R'  # ctrl+G+R
+# zplug "plugins/per-directory-history",  from:oh-my-zsh
+
+# ZVM is a better vim mode that works with keybindings
+# https://github.com/jeffreytse/zsh-vi-mode
+# zplug "jeffreytse/zsh-vi-mode"
+
+# zplug "plugins/git-auto-fetch", from:oh-my-zsh
+# zplug "plugins/git-escape-magic", from:oh-my-zsh
+# zplug "plugins/poetry", from:oh-my-zsh
+# zplug "plugins/pyenv", from:oh-my-zsh
+# zplug "plugins/z", from:oh-my-zsh
+
+################################################################################
+# dircolors: https://github.com/trapd00r/LS_COLORS
+# shellcheck source=/Users/jaredw/.lscolors.sh
+source ~/.lscolors.sh
+
+################################################################################
+
+
+path_prepend '/opt/homebrew/opt/openssl/bin'
+export PKG_CONFIG_PATH="/opt/homebrew/opt/zlib/lib/pkgconfig:/usr/local/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig:/usr/local/opt/openssl@3/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+################################################################################
+# rust
+
+# path_prepend "${HOME}/.cargo/bin"
+# 
+# ################################################################################
+# # python
+# 
+# path_prepend "${HOME}/Library/Python/3.8/bin"
+# export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
+# path_prepend "${PYENV_ROOT}/bin"
+# eval "$(pyenv init -)"
+# 
+# ################################################################################
+# # go
+# 
+# # https://github.com/syndbg/goenv/blob/master/INSTALL.md
+# export GOENV_ROOT="${XDG_DATA_HOME}/goenv"
+# path_prepend "${GOENV_ROOT}/bin"
+# eval "$(goenv init -)"
+# path_prepend "${GOROOT}/bin"
+# path_append "${GOPATH}/bin"
+# 
+# ################################################################################
+# # ruby
+# 
+# export RBENV_ROOT="${XDG_DATA_HOME}/rbenv"
+# path_prepend "${RBENV_ROOT}/bin"
+# eval "$(rbenv init -)"
+# export RACK_ENV=development
+
+################################################################################
+
+path_prepend "${XDG_BIN_HOME}"
+
+export AWS_CONFIG_FILE="$HOME/figma/figma/config/aws/sso_config"
+
+# export AWS_PAGER=''
+
+# `brew bundle`
+export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/brew/Brewfile"
+
+# set -o vi
+#
+# export PS1="%n@laptop:%~$ "
+# PROMPT="%n@laptop:%~$ "
+
+# precmd() { eval "$PROMPT_COMMAND" }
+# export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> /Users/jaredw/logs/zsh-history-$(date "+%Y-%m-%d").log; fi'
+#
+#################################################################################
+# Aliases
+
+# alias tree="tree -I 'node_modules|cache'"
+alias gvim='/usr/bin/vim'
+alias vim='/opt/homebrew/bin/nvim'
+
+## Colorize the ls output ##
+# alias ls='ls --color=auto'
+# 
+# ## Use a long listing format ##
+# alias ll='ls -la'
+# 
+# ## Show hidden files ##
+# alias l.='ls -d .* --color=auto'
+
+################################################################################
+# Options
+
+# NO_CASE_GLOB makes globbing case-insensitive. Since the file system on macOS
+# is (usually) case-insensitive, I prefer globbing and tab-completion to be
+# case-insensitive as well.
+setopt NO_CASE_GLOB
+
+# GLOB_COMPLETE turns off the behavior of replacing globs with all
+# possibilities. Instead, only replace current completion with one result and
+# let you <tab> through the other possibilities.
+setopt GLOB_COMPLETE
+
+# AUTO_CD will let you cd without writing `cd`. This is most useful for
+# relative paths. You can simply type `..` to go back a directory.
+setopt AUTO_CD
+
+# NO_CORRECT turns off correction of mistyped commands
+setopt NO_CORRECT
+setopt NO_CORRECT_ALL
+
+
+
+################################################################################
+
+error() {
+	echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
+}
+
+# https://github.com/smastrorocco/terraposh
+# https://www.terraform.io/cli/commands/apply
+export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+export TF_CLI_ARGS_apply="-parallelism=64"
+export TF_CLI_ARGS_plan="-detailed-exitcode -parallelism=64"
+export TF_CLI_ARGS_destroy="-parallelism=64"
+export TF_CLI_ARGS_output="-json"
+
+
+logs() {
+	pushd ~/logs || exit 1
+	rg "$@"
+	popd || exit 0
+}
+
+# Chrome History search with fzf
+# https://github.com/anveo/dotfiles/blob/master/shell/fzf_functions.sh
+ch() {
+  local cols sep
+  export cols=$(( COLUMNS / 3 ))
+  export sep='{::}'
+
+    # "select title, url from urls order by last_visit_time desc" |
+
+  cp -f ~/Library/Application\ Support/Google/Chrome/Default/History /tmp/h
+  sqlite3 -separator $sep /tmp/h \
+    "select distinct title, url from urls" |
+  ruby -ne '
+    cols = ENV["cols"].to_i
+    title, url = $_.split(ENV["sep"])
+    len = 0
+    puts "\x1b[36m" + title.each_char.take_while { |e|
+      if len < cols
+        len += e =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/ ? 2 : 1
+      end
+    }.join + " " * (2 + cols - len) + "\x1b[m" + url' |
+  fzf --ansi --multi --no-hscroll --tiebreak=index |
+  sed 's#.*\(https*://\)#\1#' | xargs open
+}
+
+# docker run bash
+alias dr='docker run --rm -it --entrypoint bash'
+
+export REALTIME_REDIS_CLUSTER_HOST='dummy'
+export REALTIME_REDIS_CLUSTER_PORT=1234
+
+# bindkey '^G^R' per-directory-history-toggle-history
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# Stop the % at EOL
+export PROMPT_EOL_MARK=''
+
+export FZF_DEFAULT_COMMAND="rg --color auto --files --hidden"
+export SKIM_DEFAULT_COMMAND="rg --color auto --files --hidden"
+
+################################################################################
+
+# # Set mcfly theme based on dark mode
+# if [[ "$(defaults read -g AppleInterfaceStyle 2&>/dev/null)" != "Dark" ]]; then
+#     export MCFLY_LIGHT=TRUE
+# fi
+# # vim keybindings for mcfly
+# export MCFLY_KEY_SCHEME=vim
+#
+# # Fly through your shell history. Great Scott!
+# # https://github.com/cantino/mcfly
+# eval "$(mcfly init zsh)"
+
+alias ls='exa -a'
+alias ll='ls -l --git'        # Long format, git status
+alias l='ll -a'               # Long format, all files
+alias lr='ll -T'              # Long format, recursive as a tree
+alias lx='ll -sextension'     # Long format, sort by extension
+alias lk='ll -ssize'          # Long format, largest file size last
+alias lt='ll -smodified'      # Long format, newest modification time last
+alias lc='ll -schanged'       # Long format, newest status change (ctime) last
+
+source /Users/jaredw/.config/broot/launcher/bash/br

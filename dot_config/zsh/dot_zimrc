@@ -1,0 +1,41 @@
+#!/usr/bin/env zsh
+
+# Fish shell-like syntax highlighting for Zsh.
+# If you want to use zsh-syntax-highlighting along with other plugins load it first.
+# https://github.com/zsh-users/zsh-syntax-highlighting
+zmodule "zsh-users/zsh-syntax-highlighting"
+
+# It suggests commands as you type based on history and completions.
+# https://github.com/zsh-users/zsh-autosuggestions
+zmodule "zsh-users/zsh-autosuggestions"
+
+# Additional completion definitions for Zsh.
+# https://github.com/zsh-users/zsh-completions
+zmodule "zsh-users/zsh-completions"
+
+# Show execution time for long commands
+zmodule "popstas/zsh-command-time"
+
+# fzf completions
+# https://github.com/unixorn/fzf-zsh-plugin
+zmodule "unixorn/fzf-zsh-plugin"
+
+# Replace zsh's default completion selection menu with fzf! 
+zmodule "Aloxaf/fzf-tab"
+
+# https://github.com/zimfw/fzf
+# Configures fzf for faster fetching of files and directories names.
+zmodule "fzf"
+
+# https://github.com/zimfw/asdf
+# Sets up asdf, with auto install and optimized usage of the direnv plugin.
+# pyenv/rbenv/goenv/rustup replacement
+# zmodule "asdf"
+
+# https://github.com/zimfw/exa
+# Adds aliases and better defaults for exa.
+# zmodule "exa"
+
+# zmodule ohmyzsh/ohmyzsh \
+#   -f 'plugins/wd' -s 'plugins/wd/wd.plugin.zsh' \
+#   -f 'plugins/another_one' -s 'plugins/another_one/another_one.plugin.zsh'
