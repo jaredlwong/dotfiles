@@ -1,0 +1,96 @@
+# -*-mode:gitconfig-*- vim:ft=gitconfig
+
+[user]
+	name = {{.name}}
+	email = {{.email}}
+# https://mirrors.edge.kernel.org/pub/software/scm/git/docs/gitrevisions.html
+[alias]
+	co = checkout
+	s = status
+	l = log
+	x = show
+	# archive branch
+	ab = "!f() { git tag archive/$1 $1; git branch -D $1; }; f" 
+	archived = "!f() { git tag | grep archive; }; f"
+	sync = !git fetch -n origin && git rebase origin/master
+	here = name-rev HEAD --name-only
+	new = checkout origin/master -b
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset <%an>' --abbrev-commit --date=relative
+	pushed = "! f() { git fetch -q --tags; git tag --contains $1 | grep deploy_ | sort | rev | uniq -s17 | rev; }; f "
+	fix = "! f() { git add -A && git commit --fixup HEAD; }; f"
+	fixup = "! f() { git add -A && git commit --fixup HEAD && git push origin; }; f"
+	# add commit ammend
+	acd = "! f() { git add -A && git commit --amend --date=\"$(date -R)\" --no-edit; }; f "
+	# branch
+	b = branch -vv
+	# branch delete
+	bd = branch -D
+	# commit ammend
+	cd = "! f() { git commit --amend --date=\"$(date -R)\" ; }; f "
+	# commit ammend empty
+	cde = commit --amend --date=now --no-edit
+	# fetch origin
+	fo = fetch origin
+	# set upstream
+	up = "! f() { git branch -u \"origin/$(git branch --show-current)\"; }; f"
+	r = "!bash -c 'f() { \
+		(git diff-index --quiet HEAD -- && \
+		 git diff --quiet --exit-code && \
+		 git diff --quiet --cached --exit-code && \
+		 git fetch origin && \
+		 git rebase origin/master) || \
+		(echo \"cannot rebase, there are uncommitted changes\" && exit 1); \
+	}; f'"
+	# reset hard origin
+	rho = reset --hard origin
+	# status
+	s = status
+	# unadd files
+	unadd = reset HEAD
+	stat = diff --stat HEAD^1 HEAD
+	# get fixup head commit hash
+	fhead = "! f() { git rev-parse \"$(git log --reverse --format='%H' @{upstream}..HEAD | head -n 1)\"^; }; f"
+	# fixup head stat
+	fstat = "! f() { git diff --stat \"$(git fhead)\" HEAD; }; f"
+	# fixup co fixup head
+	fco = "! f() { git checkout \"$(git fhead)\" -- \"${@}\"; }; f"
+	# fixup show
+	fdiff = "! f() { git diff \"$(git fhead)\"; }; f"
+	lol = log --date=local --format='%<(9)%h %cd %<(20)%aN %s'
+	cob = "! f() { git checkout -b jaredw/$(date '+%Y-%m-%d')/$1; }; f"
+[color]
+	ui = true
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	autocrlf = false
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[push]
+	default = current
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
