@@ -1,0 +1,26 @@
+# -*-mode:conf-toml-*- vim:ft=toml
+
+# ~/.local/share/chezmoi/.chezmoi.toml.tmpl
+# =============================================================================
+# used to customize configuration when doing a `chezmoi init`.
+#
+# this template file will trigger prompts to fill-in machine-specific templateable values. the resulting file is then created at `~/.config/chezmoi/chezmoi.toml`
+#
+# see https://www.chezmoi.io/docs/how-to/
+#
+# {{- /* this file supports go's text/template language. */}}
+
+{{- $name := promptStringOnce . "name" "Please define the git user name" "Jared L Wong" }}
+{{- $email := promptStringOnce . "email" "Please define the git user email" "jaredlwong@gmail.com" }}
+{{- $workspace := promptStringOnce . "workspace" "Please define the worplace type [personal/work]" "personal" }}
+
+ecryption = "age"
+
+[age]
+    identity = "~/.config/age/key.txt"
+    recipient = "age1sryk6mcjsgcvfhgal2awpguvppmn9w2lq3ydzfgvyxzwm3ukzc2qkm4t7h"
+
+[data]
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}
+    workspace = {{ $workspace | quote }}
