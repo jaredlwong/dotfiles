@@ -31,7 +31,7 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR}/.zprofile" ]]; then
   source "${ZDOTDIR}/.zprofile"
 fi
 
-source "${ZDOTDIR}/figma.zsh"
+source "${ZDOTDIR}/work.zshenv"
 
 # macOS
 if [[ "$OSTYPE" == darwin* ]]; then
