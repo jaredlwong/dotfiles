@@ -5,18 +5,10 @@
 #
 # https://github.com/mattmc3/zdotdir/blob/main/.zshenv
 #
-# https://www.zerotohero.dev/zshell-startup-files/
 # - This is read first and read every time, regardless of the shell being
 #   login, interactive, or none.
-# - This is the recommended place to set environment variables, though I still
-#   prefer to set my environment variables in .zprofile
-# - Why would you need it? Because, for example, if you have a script that gets
-#   called by launchd, it will run under non-interactive non-login shell, so
-#   neither .zshrc nor .zprofile will get loaded.
-#
-# ~/.zshenv should only be a one-liner that sources this file
-#
-# echo ". ~/.config/zsh/.zshenv" > ~/.zshenv
+# - Put environment variables and stuff needed for scripts here
+
 
 export ZDOTDIR="${HOME}/.config/zsh"
 
@@ -30,8 +22,64 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_RUNTIME_DIR="${HOME}/.xdg"
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
+#
+# This code checks if the current shell session is a non-login, non-interactive
+# shell, and if so, it sources the ".zprofile" file in the ZDOTDIR directory if
+# it exists and is not empty. The variable "$SHLVL" is the current level of the
+# shell, and the "-o LOGIN" option checks if the shell is a login shell.
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR}/.zprofile" ]]; then
   source "${ZDOTDIR}/.zprofile"
 fi
 
 source "${ZDOTDIR}/figma.zsh"
+
+# macOS
+if [[ "$OSTYPE" == darwin* ]]; then
+  if [[ -d /opt/homebrew ]]; then
+    export HOMEBREW_PREFIX=/opt/homebrew
+  else
+    export HOMEBREW_PREFIX=/usr/local
+  fi
+  export BROWSER='open'
+fi
+
+export TZ='America/Los_Angeles'
+export LANG='en_US.UTF-8'
+export LANGUAGE='en'
+export LC_ALL='en_US.UTF-8'
+
+# Ensure path arrays do not contain duplicates
+typeset -gU cdpath fpath mailpath path
+
+# (N) does null globbing
+# {bin,sbin} is brace expansion
+path=(
+  "${XDG_BIN_HOME}"(N)
+  # "${ASDF_DIR}/bin"(N)
+  # "${ASDF_DATA_DIR}/shims"(N)
+  "${HOMEBREW_PREFIX}"/{bin,sbin}(N)
+   /usr/local/{bin,sbin}(N)
+  $path
+)
+
+# fpath+=(${ASDF_DIR}/completions(FN))
+#
+# source ${ASDF_DIR}/lib/asdf.sh
+
+# pyenv/rbenv/goenv/rustup replacement
+
+. "$HOME/.cargo/env"
+
+eval "$(rbenv init -)"
+export RACK_ENV=development
+
+export ASDF_CONFIG_FILE="${XDG_CONFIG_HOME}/asdf/.asdfrc"
+export ASDF_DATA_DIR="${XDG_DATA_HOME}/asdf"
+source $(brew --prefix asdf)/libexec/asdf.sh
+
+export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/ripgrep/ripgreprc"
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+ssh-add ~/.ssh/id_jaredlwong_ed25519
+ssh-add ~/.ssh/instance_connect-id_rsa

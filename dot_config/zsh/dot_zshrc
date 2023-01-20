@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
 
+#
+# .zshrc
+#
+# - This is only read for interactive shells
+# - Put aliases and functions here
+# - Put zsh specific things like history tracking here
+
 # shellcheck shell=bash
 #
 # vim mode
@@ -323,3 +330,5 @@ alias lt='ll -smodified'      # Long format, newest modification time last
 alias lc='ll -schanged'       # Long format, newest status change (ctime) last
 
 source /Users/jaredw/.config/broot/launcher/bash/br
+
+alias cm=chezmoi

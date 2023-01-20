@@ -8,21 +8,6 @@
 # https://github.com/mattmc3/zdotdir/blob/main/.zprofile
 #
 
-# macOS
-if [[ "$OSTYPE" == darwin* ]]; then
-  if [[ -d /opt/homebrew ]]; then
-    export HOMEBREW_PREFIX=/opt/homebrew
-  else
-    export HOMEBREW_PREFIX=/usr/local
-  fi
-  export BROWSER='open'
-fi
-
-export TZ='America/Los_Angeles'
-export LANG='en_US.UTF-8'
-export LANGUAGE='en'
-export LC_ALL='en_US.UTF-8'
-
 # # https://github.com/zimfw/asdf/blob/master/init.zsh
 # if (( ! ${+ASDF_DIR} )); then
 #   for ASDF_DIR in \
@@ -34,30 +19,3 @@ export LC_ALL='en_US.UTF-8'
 #   done
 # fi
 # export ASDF_DIR
-# export ASDF_CONFIG_FILE="${XDG_CONFIG_HOME}/asdf/.asdfrc"
-# export ASDF_DATA_DIR="${XDG_DATA_HOME}/asdf"
-
-# Ensure path arrays do not contain duplicates
-typeset -gU cdpath fpath mailpath path
-
-# (N) does null globbing
-# {bin,sbin} is brace expansion
-path=(
-  "${XDG_BIN_HOME}"(N)
-  # "${ASDF_DIR}/bin"(N)
-  # "${ASDF_DATA_DIR}/shims"(N)
-  "${HOMEBREW_PREFIX}"/{bin,sbin}(N)
-   /usr/local/{bin,sbin}(N)
-  $path
-)
-
-# fpath+=(${ASDF_DIR}/completions(FN))
-#
-# source ${ASDF_DIR}/lib/asdf.sh
-
-# pyenv/rbenv/goenv/rustup replacement
-
-. "$HOME/.cargo/env"
-
-eval "$(rbenv init -)"
-export RACK_ENV=development

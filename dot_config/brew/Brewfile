@@ -86,3 +86,7 @@ cask "font-fira-code"
 brew "broot"
 
 cask "1password"
+
+brew "pnpm"
+
+brew "asdf"

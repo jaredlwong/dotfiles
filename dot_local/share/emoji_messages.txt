@@ -1,0 +1,339 @@
+©️: improve documentation
+⏪️: revert changes
+☀️: fix unexpected behavior
+☺️: improve overall performance
+♻️:: refactor code
+♿️: improve accessibility
+⚗️:: perform experiments
+⚡: general update
+⚡️: improve performance
+⚰️: remove dead code
+✅: add, update, or pass tests
+✅: adding a test
+✊: improve overall performance
+✋: fix accessibility issue
+✌️: refactor code
+✏️: fix typos
+✔️: improve test coverage
+✔️: make a test pass
+✨: add new feature
+✨: introduce new features
+✨: new feature
+✨: refactor code
+❤️: improve design
+➕: add a dependency
+➖: remove a dependency
+⬆️: upgrade dependencies
+⬇️: downgrade dependencies
+🌍: internationalization
+🌍: terraform
+🌐: internationalization
+🌐: internationalization and localization
+🌚: fix unexpected behavior
+🌟: enhance existing features
+🌩: aws
+🌰: improve code readability
+🌱: add new feature
+🌱: add or update seed files
+🌱: improve code maintainability
+🌱: init commit
+🌲: improve code quality
+🌳: improve code structure and organization
+🌴: improve code maintainability
+🌷: improve code security
+🌸: improve design
+🌸: improve visual design
+🌹: improve code test coverage
+🌹: improve documentation
+🌺: improve documentation
+🌻: improve code reliability
+🌼: improve code scalability
+🌾: improve code documentation
+🌿: improve code performance
+🍁: improve accessibility
+🍂: improve ui/ux
+🍄: improve code scalability
+🍇: improve code quality
+🍎: fixing on macos
+🍎: mobile-ios
+🍱: add or update assets
+🍻: write code drunkenly
+🎉: add new feature
+🎉: begin a project
+🎉: initial commit
+🎉: release new version
+🎧: enhance audio processing
+🎨: cosmetic
+🎨: improve format/structure
+🎨: improve structure / format of the code
+🎨: improve visual design
+🎨: update design
+🎩: sinatra
+🎵: improve audio processing
+🏁: fixing on windows
+🏗️: make architectural changes
+🏷️: add or update types
+🐄🔔🎵: adding more cowbell
+🐍: fix security issues
+🐎: performance
+🐘: improve scalability
+🐛: bugfix
+🐛: fix a bug
+🐛: fix bugs
+🐛: fix critical bugs
+🐞: fix bugs
+🐢: improve code stability
+🐦: add new functionality
+🐧: fixing on linux
+🐱: fix bug
+🐳: docker
+🐿️: remove unnecessary code or files
+👀: improve monitoring
+👊: enhance user experience
+👋: fix data issue
+👌: code review changes
+👌: refactor code
+👍: improve usability
+👎: fix bug
+👏: improve overall performance
+👑: add new functionality
+👔: add or update business logic
+👕: lint
+👥: add or update contributor(s)
+👯‍♀️: refactor code
+👷: add or update ci build system
+👷: adding ci build system
+👽: translation
+👽️: update code due to external api changes
+👿: fix security vulnerability
+💀: fix security issue
+💁: update dependencies
+💃: add new feature
+💄: add or update the ui and style files
+💄: cosmetic
+💄: improve ui / design
+💋: update interface
+💔: improve design
+💕: enhance functionality
+💖: optimize speed
+💗: update dependencies
+💘: improve design
+💙: refactor code
+💚: continuous integration
+💚: fix ci build
+💚: improve design
+💛: optimize performance
+💜: add new feature
+💞: update interface
+💡: add new functionality
+💡: add new ideas
+💡: add or update comments in source code
+💡: documenting source code
+💥: breaking changes
+💥: introduce breaking changes
+💩: bad code / need improv.
+💩: deprecation
+💩: optimize performance
+💩: write bad code that needs to be improved
+💪: enhance functionality
+💫: add or update animations and transitions
+💬: add comments and explanations
+💬: add or update text and literals
+💬: comments
+💬: messaging feature
+💯: enhance user experience
+💸: add sponsorships or money related infrastructure
+💻: devbox
+💻: update computer related feature
+💻: update dependencies
+💾: save changes
+📄: add or update license
+📄: improve documentation
+📇: metadata
+📈: add or update analytics or track code
+📈: analytics or tracking code
+📈: improve performance
+📊: livegraph
+📌: pin dependencies to specific versions
+📖: update readme
+📚: documentation
+📝: add or update documentation
+📝: text
+📝: update readme or documentation
+📝: write documentation
+📦: package.json in js
+📦️: add or update compiled files or packages
+📱: mobile optimization
+📱: mobile-android
+📱: work on responsive design
+📸: add or update snapshots
+🔀: merge branches
+🔀: merging branches
+🔄: changestream
+🔇: remove logs
+🔊: add or update logs
+🔌: plugins
+🔍: debug and troubleshoot
+🔍: improve code quality
+🔍: improve searching feature
+🔍️: improve seo
+🔐: add or update secrets
+🔑: secrets
+🔑: variables
+🔒: add security feature
+🔒: improve security
+🔒: secrets
+🔒: security
+🔒: security fix
+🔒: security updates
+🔒️: fix security issues
+🔔: notifs
+🔖: release / version tags
+🔖: tag version
+🔖: version tag
+🔗: improve code structure and organization
+🔗: web
+🔙💻💾: reverting to the state of the art
+🔝💪🛠️: making it better than it was before
+🔥: enhance functionality
+🔥: refactor code
+🔥: remove code or files
+🔥: remove deprecated code or files
+🔥: remove old code
+🔥: removing code/files
+🔧: add or update configuration files
+🔧: configuration files
+🔧: fix linter issues
+🔧: improve code quality
+🔧: improve performance
+🔧: refactor code
+🔧: tooling
+🔧🔨🔩: fixing all the things
+🔨: add or update development scripts
+🔨: improve code quality
+🔨: refactor code
+🔫: improve performance
+🕰️: improve time complexity
+🕹️: multiplayer
+🕹️🤝: multiplayer
+🖥️: desktop
+🖥️: fullscreen
+🖼️: viewer
+🗃️: perform database related changes
+🗄️: db
+🗄️: dbproxy
+🗑️: deprecate code that needs to be cleaned up
+🗑️: removal
+🗳: improve user experience
+😀: improve ui design
+😁: improve documentation
+😂: add fun feature
+😅: improve overall performance
+😆: add new functionality
+😆: update interface
+😉: add new functionality
+😊: update interface
+😋: improve ui design
+😌: fix minor issue
+😎: enhance user experience
+😏: optimize speed
+😐: fix unexpected behavior
+😑: fix minor bug
+😒: improve error handling
+😓: improve error handling
+😔: resolve merge conflict
+😕: resolve merge conflict
+😖: fix unexpected behavior
+😘: add new feature
+😙: add new functionality
+😛: update interface
+😜: add new functionality
+😝: fix minor bug
+😞: fix critical error
+😠: resolve merge conflict
+😢: fix critical error
+😢: fix security issue
+😣: fix security issue
+😤: resolve merge conflict
+😥: fix critical bug
+😩: resolve conflict
+😪: improve error handling
+😪: refactor code
+😫: improve documentation
+😬: fix minor bug
+😭: fix critical bug
+😰: resolve merge conflict
+😱: fix security issue
+😲: fix security issue
+😳: fix unexpected behavior
+😴: fix sleep mode
+😵🤷‍♂️💻: i have no idea what i did
+😶: improve code readability
+😷: improve monitoring
+🙅‍♀️: improve security
+🙆‍♀️: fix minor bug
+🙈: add or update a .gitignore file
+🙈: fix security vulnerability
+🙉: improve test coverage
+🙊: fix data issue
+🙋‍♀️: improve usability
+🙌: add new feature
+🙏: optimize performance
+🚀: deploy code
+🚀: deploy stuff
+🚀: deploy updates
+🚀: deploys
+🚀: improve performance
+🚀: launch new feature
+🚑: critical hotfix
+🚚: move or rename resources (e.g.: files, paths, routes)
+🚚: move/rename repository
+🚢💻🔥: it compiles, ship it!
+🚧: refactor code
+🚧: work in progress
+🚧: work in progress (wip)
+🚨: fix compiler / linter warnings
+🚨: tests
+🚨: update dependencies and fix security vulnerabilities
+🚩: add feature flags
+🚩: remove feature flags
+🚩: update feature flags
+🚶‍♂️: improve usability
+🚸: improve accessibility
+🚸: improve user experience / usability
+🛂: work on code related to authorization, roles and permissions
+🛍️: e-commerce optimization
+🛒: shopping cart feature
+🛠: improve dev tools
+🛠️: bazel
+🛠️: ci
+🛠️: config
+🛠️: prototyping
+🤔: improve monitoring
+🤖: bot
+🤖: implement ai
+🤝: cmty
+🤝: community
+🤝: multiplayer
+🤞💻🔌: let's hope this works
+🤞🤷‍♂️💻: i swear it was like this when i found it
+🤡: mock things
+🤣: fix bug
+🤲: update dependencies
+🤷‍♂️🔥💻: this is fine
+🥅: catch errors
+🥚: add or update an easter egg
+🥵: optimize speed
+🦉: improve code readability
+🦔: improve performance
+🦕: update or add new features
+🦺: add or update code related to validation
+🧐: data exploration/inspection
+🧑‍💻: improve developer experience
+🧪: add a failing test
+🧱: infrastructure related changes
+🧱: lego
+🧵: add or update code related to multithreading or concurrency
+🧹🧼🔬: removing unnecessary complexity
+🩹: simple fix for a non-critical issue
+🩺: add or update healthcheck
